@@ -1,24 +1,48 @@
 import React, { useEffect, useState } from 'react';
+import './App.css';
+
 import Tmdb from './Tmdb';
+
+import MovieList from './components/MovieList';
+import FeaturedMovie from './components/FeaturedMovie';
 
 function App() {
 
-  const [movieList, setMovieList] = useState([])
+  const [movieList, setMovieList] = useState([]);
+  const [featuredData, setFeaturedData] = useState(null);
 
   useEffect(() => {   
     const loadAll = async () => {
-      // Pegando a lista total
+      // Pegando a lista total de filmes
       let list = await Tmdb.getHomeList();
       setMovieList(list);
+
+      // Pegando o featured (originais do Netflix aleatoriamente)
+      let originals = list.filter(i => i.slug === 'originals')
+      let randomChosen = Math.floor(Math.random() * (originals[0].items.results.length - 1))
+      let movieChosen = originals[0].items.results[randomChosen]
+      let chosenInfo = await Tmdb.getMovieInfo(movieChosen.id, 'tv')
+      setFeaturedData(chosenInfo)
     }
 
     loadAll();
   }, []);
 
   
-
   return(
-    <div>Hello world</div>
+    <div className="page">
+
+      {featuredData && 
+        <FeaturedMovie item={featuredData} />
+      }
+
+      <section className="lists">
+        {movieList.map((item, key) => (
+          <MovieList key={key} title={item.title} items={item.items} />
+        ))}
+      </section>  
+
+    </div>
   )
 } 
 
