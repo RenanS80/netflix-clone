@@ -1,0 +1,15 @@
+footer{
+    margin: 50px;
+    text-align: center;
+}
+
+footer a{
+    text-decoration: none;
+    font-size: 17px;
+    color: var(--red);
+    transition: all ease 0.2s;
+}
+
+footer a:hover{
+    color: #EC2731;
+}

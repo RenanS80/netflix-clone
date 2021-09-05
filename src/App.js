@@ -3,9 +3,11 @@ import './App.css';
 
 import Tmdb from './Tmdb';
 
-import MovieList from './components/MovieList';
-import FeaturedMovie from './components/FeaturedMovie';
 import Header from './components/Header';
+import FeaturedMovie from './components/FeaturedMovie';
+import MovieList from './components/MovieList';
+import Footer from './components/Footer';
+
 
 function App() {
 
@@ -13,7 +15,7 @@ function App() {
   const [featuredData, setFeaturedData] = useState(null);
   const [blackHeader, setBlackHeader] = useState(false);
 
-  
+
   useEffect(() => {   
     const loadAll = async () => {
       // Pegando a lista total de filmes
@@ -65,7 +67,8 @@ function App() {
           <MovieList key={key} title={item.title} items={item.items} />
         ))}
       </section>  
-
+    
+      <Footer />
     </div>
   )
 } 
