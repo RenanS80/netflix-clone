@@ -48,7 +48,6 @@
     line-height: 130%;
     color: var(--gray);
     max-width: 40%;
-
 }
 
 .featured-buttons{
@@ -87,4 +86,35 @@
     margin-top: 15px;
     font-size: 18px;
     color: var(--gray);
+}
+
+
+/* MEDIA QUERIES */
+@media (max-width: 760px){
+    .featured{
+        height: 90vh;
+    }
+    
+    .featured-name{
+        font-size: 40px;
+    }
+
+    .featured-info{
+        font-size: 16px;
+    }
+
+    .featured-description{
+        max-width: 100%;
+        font-size: 14px;
+        margin-right: 30px;
+    }
+
+    .watch-button,
+    .mylist-button{
+        font-size: 16px;
+    }
+
+    .featured-genres{
+        font-size: 14px;
+    }
 }
