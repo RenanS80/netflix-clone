@@ -5,12 +5,15 @@ import Tmdb from './Tmdb';
 
 import MovieList from './components/MovieList';
 import FeaturedMovie from './components/FeaturedMovie';
+import Header from './components/Header';
 
 function App() {
 
   const [movieList, setMovieList] = useState([]);
   const [featuredData, setFeaturedData] = useState(null);
+  const [blackHeader, setBlackHeader] = useState(false);
 
+  
   useEffect(() => {   
     const loadAll = async () => {
       // Pegando a lista total de filmes
@@ -28,9 +31,30 @@ function App() {
     loadAll();
   }, []);
 
+
+  // Monitora o evento para scroll do header
+  useEffect(() => {
+    const scrollListener = () => {
+      if(window.scrollY > 10) {
+        setBlackHeader(true)
+      }
+      else{
+        setBlackHeader(false)
+      }
+    }
+
+    window.addEventListener('scroll', scrollListener)
+
+    return () => {
+      window.removeEventListener('scroll', scrollListener)
+    }
+  })
+
   
   return(
     <div className="page">
+
+      <Header black={blackHeader}/>
 
       {featuredData && 
         <FeaturedMovie item={featuredData} />
