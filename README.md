@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img src="https://ik.imagekit.io/zqxyh6u3ylz/Netflix/netflix-logo_ske-ZD_gL.png?updatedAt=1630868412855">
+    <img src="https://ik.imagekit.io/zqxyh6u3ylz/Netflix/netflix-logo_ske-ZD_gL.png?updatedAt=1630868412855" style="width: 40%">
 </h1>
 
 ## 📃 Sobre
